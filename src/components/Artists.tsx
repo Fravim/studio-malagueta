@@ -142,7 +142,7 @@ function Artists() {
                             <InstagramEmbed 
                                 url={url} 
                                 width="100%"
-                                captioned={true} 
+                                captioned={false} 
                             />
                         </div>
                     ))}
@@ -160,3 +160,4 @@ function Artists() {
 
 
 export default Artists
+
