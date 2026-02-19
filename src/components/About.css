@@ -1,0 +1,108 @@
+/* src/components/About.css */
+
+.about-section {
+    background-color: #161616; /* Um cinza um pouco mais claro que o preto total */
+    padding: 80px 20px; /* Espaço generoso em cima e embaixo */
+    border-bottom: 1px solid #333; /* Linha sutil para separar */
+}
+
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto; /* Centraliza o bloco na tela */
+    display: flex; /* Coloca texto e imagem lado a lado */
+    align-items: center; /* Alinha verticalmente no centro */
+    gap: 60px; /* Espaço entre o texto e a imagem */
+}
+
+/* --- ESTILO DO TEXTO --- */
+.about-text {
+    flex: 1; /* Ocupa metade do espaço */
+}
+
+.about-text h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--cor-texto-principal);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.highlight {
+    color: var(--cor-destaque-dourado); /* Destaca a palavra "identidade" */
+}
+
+.about-text p {
+    color: var(--cor-texto-secundario);
+    font-size: 1.1rem;
+    line-height: 1.6; /* Aumenta a altura da linha para facilitar leitura */
+    margin-bottom: 15px;
+}
+
+.about-text strong {
+    color: var(--cor-texto-principal); /* Destaca palavras chave em branco */
+}
+
+/* --- ESTATÍSTICAS (Os números grandes) --- */
+.stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333; /* Linha separadora fina */
+}
+
+.stat-item h3 {
+    font-family: 'Rye', serif;
+    font-size: 2rem;
+    color: var(--cor-destaque-dourado);
+    margin: 0;
+}
+
+.stat-item span {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: var(--cor-texto-secundario);
+    letter-spacing: 1px;
+}
+
+/* --- ESTILO DA IMAGEM (Placeholder) --- */
+.about-image {
+    flex: 1; /* Ocupa a outra metade */
+    display: flex;
+    justify-content: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 400px;
+    background-color: #222; /* Fundo cinza escuro */
+    border: 2px solid var(--cor-destaque-marrom);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    position: relative;
+    
+    /* Efeito de sombra deslocada (muito comum em design moderno) */
+    box-shadow: 15px 15px 0px rgba(93, 64, 55, 0.2); 
+    transition: transform 0.3s ease;
+}
+
+.image-placeholder:hover {
+    transform: translate(-5px, -5px); /* Move um pouco ao passar o mouse */
+    box-shadow: 20px 20px 0px rgba(212, 175, 55, 0.2); /* Sombra fica dourada */
+}
+
+/* --- RESPONSIVIDADE (Mobile) --- */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* No celular, empilha um embaixo do outro */
+        text-align: center;
+    }
+
+    .stats {
+        justify-content: center; /* Centraliza os números no celular */
+    }
+}

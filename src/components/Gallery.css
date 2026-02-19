@@ -1,0 +1,130 @@
+/* src/components/Gallery.css */
+
+.gallery-section {
+    background-color: #121212; /* Mantém o tema dark */
+    padding: 80px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.gallery-header h2 {
+    font-family: 'Rye', serif;
+    font-size: 3rem;
+    color: var(--cor-texto-principal);
+    margin-bottom: 10px;
+}
+
+.gallery-header p {
+    font-family: 'Cinzel', serif;
+    color: var(--cor-destaque-dourado);
+    letter-spacing: 2px;
+}
+
+/* --- MASONRY LAYOUT (O Mosaico) --- */
+.masonry-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+    /* Cria 4 colunas onde o conteúdo flui igual jornal */
+    column-count: 4; 
+    column-gap: 20px; 
+}
+
+.masonry-item {
+    /* Evita que o item seja quebrado no meio de uma coluna */
+    break-inside: avoid; 
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #222;
+    transition: transform 0.3s ease;
+}
+
+.masonry-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Tamanhos simulados dos placeholders */
+.gallery-placeholder {
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    font-family: 'Cinzel', serif;
+    border: 1px solid #333;
+    
+    /* Altura padrão (Quadrado) */
+    height: 250px; 
+}
+
+/* Classes para variar a altura (simulando fotos reais) */
+.masonry-item.tall .gallery-placeholder {
+    height: 400px; /* Foto Vertical */
+}
+
+.masonry-item.wide .gallery-placeholder {
+    height: 200px; /* Foto Horizontal */
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.gallery-overlay-hover {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(212, 175, 55, 0.2); /* Dourado transparente */
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 0.3s ease;
+}
+
+.masonry-item:hover .gallery-overlay-hover {
+    opacity: 1; /* Visível ao passar o mouse */
+}
+
+.icon-zoom {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Botão final */
+.gallery-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn-instagram-outline {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid var(--cor-texto-secundario);
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+}
+
+.btn-instagram-outline:hover {
+    border-color: var(--cor-destaque-dourado);
+    color: var(--cor-destaque-dourado);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .masonry-grid { column-count: 2; } /* 2 colunas em tablets */
+}
+
+@media (max-width: 600px) {
+    .masonry-grid { column-count: 1; } /* 1 coluna em celulares */
+}

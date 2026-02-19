@@ -1,0 +1,28 @@
+:root {
+  /* Paleta de Cores - Studio Malagueta */
+  --cor-fundo-principal: #121212;   /* Preto quase absoluto (elegante) */
+  --cor-fundo-secundaria: #1E1E1E;  /* Cinza chumbo para destacar cards */
+  
+  --cor-texto-principal: #E0E0E0;   /* Branco suave (não cansa a vista) */
+  --cor-texto-secundario: #A0A0A0;  /* Cinza para textos menos importantes */
+  
+  --cor-destaque-dourado: #D4AF37;  /* O Dourado clássico */
+  --cor-destaque-marrom: #5D4037;   /* Marrom couro/terra */
+  --cor-detalhe-vermelho: #8B0000;  /* Vermelho sangue (para detalhes old school) */
+
+  /* Fontes (vamos configurar depois, mas já deixamos o espaço) */
+  --fonte-principal: sans-serif;
+}
+
+/* Reset básico para garantir que o site ocupe a tela toda */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto-principal);
+  font-family: var(--fonte-principal);
+}

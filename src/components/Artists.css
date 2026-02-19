@@ -1,0 +1,322 @@
+/* src/components/Artists.css */
+
+/* --- BLOCOS GERAIS --- */
+.artists-section {
+    background-color: var(--cor-fundo-principal);
+    padding: 80px 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-family: 'Rye', serif;
+    font-size: 3rem;
+    color: var(--cor-destaque-dourado);
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: var(--cor-texto-secundario);
+    font-family: 'Cinzel', serif;
+}
+
+.artists-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* --- CARD DO ARTISTA (PRINCIPAL) --- */
+.artist-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    transition: transform 0.3s;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--cor-destaque-dourado);
+}
+
+/* Container da Foto do Artista (Retângulo Vertical) */
+.artist-photo-container {
+    height: 400px;
+    background-color: #222;
+    overflow: hidden;
+    position: relative;
+}
+
+/* A Foto em si */
+.artist-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre o espaço sem distorcer */
+    object-position: top center; /* Foca no rosto */
+    transition: transform 0.5s ease;
+}
+
+.artist-card:hover .artist-photo {
+    transform: scale(1.05); /* Zoom suave ao passar o mouse */
+}
+
+/* Faixa com Nome e @ */
+.artist-banner {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 40%, transparent);
+    padding: 60px 20px 20px; /* Padding top maior para o gradiente subir */
+    text-align: center;
+}
+
+.artist-handle {
+    color: var(--cor-destaque-dourado);
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.artist-banner h3 {
+    color: #fff;
+    font-family: 'Rye', serif;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* --- O MODAL (LIGHTBOX) --- */
+.gallery-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo bem escuro */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.gallery-content {
+    width: 95%;
+    max-width: 1400px;
+    height: 95vh; /* Altura maximizada para caber legendas */
+    background-color: #121212;
+    border: 1px solid #333;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* --- COLUNA ESQUERDA (SIDEBAR) --- */
+.gallery-sidebar {
+    width: 35%;
+    padding: 30px;
+    background-color: #0f0f0f;
+    border-right: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Foto Redonda no Modal */
+.gallery-big-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #222;
+    border: 3px solid var(--cor-destaque-dourado);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    overflow: hidden; /* Garante que a foto fique redonda */
+}
+
+.gallery-big-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-sidebar h2 {
+    font-family: 'Rye', serif;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.gallery-handle {
+    color: var(--cor-destaque-dourado);
+    font-family: 'Cinzel', serif;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.bio-container {
+    margin-bottom: 30px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.gallery-bio {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.btn-gallery-insta {
+    padding: 15px 30px;
+    background-color: transparent;
+    border: 1px solid var(--cor-destaque-dourado);
+    color: var(--cor-destaque-dourado);
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Cinzel', serif;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn-gallery-insta:hover {
+    background-color: var(--cor-destaque-dourado);
+    color: #000;
+}
+
+/* --- COLUNA DIREITA (GRID DO INSTAGRAM) --- */
+.gallery-grid-area {
+    width: 65%;
+    /* Padding reduzido para ganhar espaço */
+    padding: 15px 25px;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.gallery-grid-area h3 {
+    color: var(--cor-texto-secundario);
+    font-family: 'Cinzel', serif;
+    border-bottom: 1px solid #333;
+    
+    /* Texto menor e mais compacto */
+    font-size: 0.9rem;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    margin-top: 0;
+    
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+/* GRID 2x2 */
+.portfolio-embed-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.embed-container {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    border: 1px solid #222;
+    width: 100%;
+    height: 100%;
+    
+    /* Centraliza o iframe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.embed-container:hover {
+    border-color: var(--cor-destaque-dourado);
+    z-index: 10;
+}
+
+/* --- SETAS DE NAVEGAÇÃO --- */
+.nav-arrow {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 20px;
+    z-index: 2001;
+    transition: 0.3s;
+}
+
+.nav-arrow:hover {
+    color: var(--cor-destaque-dourado);
+    transform: scale(1.1);
+}
+
+.nav-arrow.left { margin-right: 10px; }
+.nav-arrow.right { margin-left: 10px; }
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 900px) {
+    .gallery-content {
+        flex-direction: column;
+        height: 95vh;
+        overflow-y: auto; /* Permite rolar no celular */
+    }
+
+    .gallery-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #333;
+        height: auto;
+        padding: 20px;
+    }
+
+    .gallery-grid-area {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        overflow: visible;
+    }
+
+    .portfolio-embed-grid {
+        /* No celular, vira 1 coluna para não ficar muito pequeno */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .nav-arrow {
+        position: absolute;
+        top: 50%;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        color: #fff;
+        padding: 10px 15px;
+    }
+    .nav-arrow.left { left: 10px; }
+    .nav-arrow.right { right: 10px; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

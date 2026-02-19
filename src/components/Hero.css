@@ -1,0 +1,96 @@
+/* src/components/Hero.css */
+
+.hero-container {
+    width: 100%;
+    /* Altura ajustada: 85% da tela do usuário */
+    height: 85vh; 
+    
+    /* --- FUNDO PROVISÓRIO (CSS PURO) --- */
+    /* Cria um efeito de luz no centro (#2a2a2a) que escurece até o preto total (#000) nas bordas */
+    background: radial-gradient(circle at center, #2e2e2e 0%, #121212 100%);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    
+    /* Adiciona uma textura sutil (opcional, deixa com cara de "parede") */
+    background-image: radial-gradient(circle at center, #2e2e2e 0%, #0a0a0a 100%);
+}
+
+/* Não precisamos mais do .hero-overlay separado porque o fundo já é escuro,
+   mas vamos manter o .hero-content centralizado */
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-content h1 {
+    /* 1. Voltamos para a fonte Old School */
+    font-family: 'Rye', serif;
+    
+    /* 2. AJUSTE DE TAMANHO: Reduzido para ficar mais contido e elegante */
+    font-size: 2.6rem; 
+    
+    /* 3. O SEGREDO DA NITIDEZ: 
+       Forçamos o peso 400 (Normal). 
+       Se colocar bold/700 aqui, ela borra. */
+    font-weight: 400;
+    
+    color: var(--cor-texto-principal);
+    margin-bottom: 1.5rem;
+    
+    /* 4. SOMBRA LIMPA (HARD SHADOW):
+       Em vez de esfumaçar (blur), deixamos a sombra sólida (0px de blur).
+       Isso melhora muito a leitura de fontes desenhadas. */
+    text-shadow: 3px 3px 0px #000; 
+    
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Um pouco mais de espaço para respirar */
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--cor-texto-secundario); /* Cinza claro */
+    margin-bottom: 2.5rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+}
+
+/* --- BOTÃO DOURADO --- */
+.btn-gold {
+    background-color: transparent; /* Começa transparente pra ficar chique */
+    color: var(--cor-destaque-dourado);
+    padding: 15px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid var(--cor-destaque-dourado);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block; /* Importante para o padding funcionar em links <a> */
+}
+
+.btn-gold:hover {
+    background-color: var(--cor-destaque-dourado); /* Preenche ao passar o mouse */
+    color: #000; /* Texto fica preto para contraste */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); /* Brilho neon */
+}
+
+/* Animação de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVIDADE (Para celulares) --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem; /* Diminui o texto no celular */
+    }
+}
