@@ -35,7 +35,7 @@ function Artists() {
         "https://www.instagram.com/reel/DJ7dTB6PEPL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
         "https://www.instagram.com/reel/C-D6_wCvoH-/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
         "https://www.instagram.com/reel/DU6hddLj8v4/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
-        "https://www.instagram.com/p/CUbHFHLFw92/"
+        "https://www.instagram.com/reel/DA9UdCuJ8mG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
       ]
     },
     {
@@ -46,10 +46,10 @@ function Artists() {
       bio: "Mestre na tradição oriental e traços firmes. Suas obras contam histórias mitológicas com uma pegada moderna.",
       photo: felipeImg, // <--- Usando a foto importada
       portfolioUrls: [
-        "https://www.instagram.com/p/CpjW8j5L1k2/",
-        "https://www.instagram.com/p/CpjW8j5L1k2/",
-        "https://www.instagram.com/p/CpjW8j5L1k2/",
-        "https://www.instagram.com/p/CpjW8j5L1k2/"
+        "https://www.instagram.com/reel/DRM4zYxDY37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        "https://www.instagram.com/p/DJcZ8MdP3yw/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
+        "https://www.instagram.com/reel/C8Hd-PAOs8G/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
+        "https://www.instagram.com/reel/C7ZY814uI3K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
       ]
     },
     {
@@ -60,14 +60,13 @@ function Artists() {
       bio: "Delicadeza e força. Thaty domina o Fine Line e o Old School, criando artes que fluem com a anatomia do corpo.",
       photo: thatyImg, // <--- Usando a foto importada
       portfolioUrls: [
-        "https://www.instagram.com/p/Ck8z9xqr_J9/",
-        "https://www.instagram.com/p/Ck8z9xqr_J9/",
-        "https://www.instagram.com/p/Ck8z9xqr_J9/",
-        "https://www.instagram.com/p/Ck8z9xqr_J9/"
+        "https://www.instagram.com/thaty.tattoo_/p/DUJjW3bkQvk/",
+        "https://www.instagram.com/thaty.tattoo_/p/DQKlk5nEdGa/",
+        "https://www.instagram.com/thaty.tattoo_/p/DJ-PVRxtsDN/",
+        "https://www.instagram.com/thaty.tattoo_/p/Cp0uuGHPtno/"
       ]
     }
   ];
-
   // ... (Funções handleNext, handlePrev, useEffect iguais ao anterior) ...
   const handleNext = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -158,5 +157,6 @@ function Artists() {
     </section>
   )
 }
+
 
 export default Artists
