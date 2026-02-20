@@ -1,42 +1,111 @@
+/* ============================= */
+/* RESET BASE PROFISSIONAL */
+/* ============================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #121212; /* Dark principal */
+  color: rgba(255, 255, 255, 0.87);
+  line-height: 1.5;
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================= */
+/* ROOT CONTAINER */
+/* ============================= */
+
 #root {
-  max-width: 1280px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================= */
+/* ELEMENTOS BASE */
+/* ============================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ============================= */
+/* TIPOGRAFIA BASE */
+/* ============================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* ============================= */
+/* UTILIDADES GLOBAIS */
+/* ============================= */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 20px;
+}
+
+/* Classe utilitária para centralização */
+.text-center {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Espaçamento padrão entre seções */
+.section {
+  padding: 100px 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* ============================= */
+/* MELHORIA DE PERFORMANCE */
+/* ============================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
