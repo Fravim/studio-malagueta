@@ -1,34 +1,24 @@
-/* src/components/Header.css */
-
 .header-container {
     background-color: var(--cor-fundo-secundaria);
-    
-    /* Padding mínimo apenas para não colar na borda */
-    padding: 5px 0; 
-    
+    padding: 5px 20px; /* adiciona respiro lateral */
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid var(--cor-destaque-marrom);
-    
-    /* Reduzi o espaço entre o menu e a logo para ficar mais "juntinho" */
-    gap: 25px; 
+    gap: 25px;
+    width: 100%;
 }
 
-/* --- LOGO CENTRAL --- */
+/* --- LOGO --- */
 .logo-center {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Reduzi a largura máxima permitida */
-    max-width: 250px; 
+    max-width: 250px;
 }
 
 .logo-center img {
-    /* O PULO DO GATO: Diminuir a altura da imagem diminui a barra toda.
-       120px costuma ser um tamanho excelente para headers compactos. */
-    height: 120px; 
-    
+    height: 120px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -39,18 +29,19 @@
     transform: scale(1.05);
 }
 
-/* --- MENUS --- */
+/* --- MENU --- */
 .menu-group ul {
     list-style: none;
     display: flex;
-    gap: 25px; /* Itens do menu um pouco mais próximos */
+    gap: 25px;
     align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
-/* AQUI CONSERTAMOS OS LINKS AZUIS */
 .menu-group li a {
-    text-decoration: none; /* Tira o sublinhado */
-    color: #f0f0f0; /* Força a cor branca/creme (Use sua variável se preferir) */
+    text-decoration: none;
+    color: #f0f0f0;
     font-family: 'Cinzel', serif;
     font-size: 0.9rem;
     font-weight: 600;
@@ -59,7 +50,7 @@
     transition: color 0.3s;
 }
 
-.menu-group li:hover {
+.menu-group li a:hover {
     color: var(--cor-destaque-dourado);
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
