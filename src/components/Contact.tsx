@@ -90,10 +90,10 @@ function Contact() {
 
       <div className="footer-bar">
         <p>© {new Date().getFullYear()} Studio Malagueta. Todos os direitos reservados.</p>
-        <p className="dev-credit">Desenvolvido com 🩸 e ☕</p>
       </div>
     </footer>
   )
 }
+
 
 export default Contact
