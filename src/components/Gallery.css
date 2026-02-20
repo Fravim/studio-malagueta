@@ -1,7 +1,9 @@
-/* src/components/Gallery.css */
+/* =====================================================
+   GALLERY SECTION
+   ===================================================== */
 
 .gallery-section {
-    background-color: #121212; /* Mantém o tema dark */
+    background-color: #121212;
     padding: 80px 20px;
     border-bottom: 1px solid #333;
 }
@@ -13,7 +15,7 @@
 
 .gallery-header h2 {
     font-family: 'Rye', serif;
-    font-size: 3rem;
+    font-size: clamp(2.2rem, 4vw, 3rem);
     color: var(--cor-texto-principal);
     margin-bottom: 10px;
 }
@@ -24,19 +26,19 @@
     letter-spacing: 2px;
 }
 
-/* --- MASONRY LAYOUT (O Mosaico) --- */
+/* =====================================================
+   MASONRY GRID
+   ===================================================== */
+
 .masonry-grid {
     max-width: 1200px;
     margin: 0 auto;
-    
-    /* Cria 4 colunas onde o conteúdo flui igual jornal */
-    column-count: 4; 
-    column-gap: 20px; 
+    column-count: 4;
+    column-gap: 20px;
 }
 
 .masonry-item {
-    /* Evita que o item seja quebrado no meio de uma coluna */
-    break-inside: avoid; 
+    break-inside: avoid;
     margin-bottom: 20px;
     position: relative;
     border-radius: 8px;
@@ -50,7 +52,10 @@
     transform: translateY(-5px);
 }
 
-/* Tamanhos simulados dos placeholders */
+/* =====================================================
+   PLACEHOLDER / IMAGEM
+   ===================================================== */
+
 .gallery-placeholder {
     background-color: #1a1a1a;
     display: flex;
@@ -59,35 +64,37 @@
     color: #444;
     font-family: 'Cinzel', serif;
     border: 1px solid #333;
-    
-    /* Altura padrão (Quadrado) */
-    height: 250px; 
+    height: 250px;
 }
 
-/* Classes para variar a altura (simulando fotos reais) */
+/* VARIAÇÕES DE ALTURA */
+
 .masonry-item.tall .gallery-placeholder {
-    height: 400px; /* Foto Vertical */
+    height: 400px;
 }
 
 .masonry-item.wide .gallery-placeholder {
-    height: 200px; /* Foto Horizontal */
+    height: 200px;
 }
 
-/* Efeito ao passar o mouse (Hover) */
+/* =====================================================
+   HOVER OVERLAY
+   ===================================================== */
+
 .gallery-overlay-hover {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(212, 175, 55, 0.2); /* Dourado transparente */
+    inset: 0;
+    background-color: rgba(212, 175, 55, 0.2);
     backdrop-filter: blur(2px);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Invisível por padrão */
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .masonry-item:hover .gallery-overlay-hover {
-    opacity: 1; /* Visível ao passar o mouse */
+    opacity: 1;
 }
 
 .icon-zoom {
@@ -97,7 +104,10 @@
     text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-/* Botão final */
+/* =====================================================
+   FOOTER BUTTON
+   ===================================================== */
+
 .gallery-footer {
     text-align: center;
     margin-top: 40px;
@@ -111,7 +121,7 @@
     text-decoration: none;
     font-family: 'Cinzel', serif;
     letter-spacing: 2px;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .btn-instagram-outline:hover {
@@ -120,11 +130,74 @@
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
 }
 
-/* Responsividade */
-@media (max-width: 900px) {
-    .masonry-grid { column-count: 2; } /* 2 colunas em tablets */
+/* =====================================================
+   RESPONSIVIDADE - TABLET
+   ===================================================== */
+
+@media (max-width: 1024px) {
+
+    .masonry-grid {
+        column-count: 3;
+    }
+
+    .gallery-placeholder {
+        height: 230px;
+    }
+
+    .masonry-item.tall .gallery-placeholder {
+        height: 350px;
+    }
+
 }
 
+/* =====================================================
+   RESPONSIVIDADE - MOBILE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .masonry-grid {
+        column-count: 2;
+    }
+
+    .gallery-section {
+        padding: 60px 20px;
+    }
+
+    .gallery-placeholder {
+        height: 220px;
+    }
+
+    .masonry-item.tall .gallery-placeholder {
+        height: 300px;
+    }
+
+    .masonry-item.wide .gallery-placeholder {
+        height: 180px;
+    }
+
+}
+
+/* =====================================================
+   CELULARES PEQUENOS
+   ===================================================== */
+
 @media (max-width: 600px) {
-    .masonry-grid { column-count: 1; } /* 1 coluna em celulares */
+
+    .masonry-grid {
+        column-count: 1;
+    }
+
+    .gallery-placeholder {
+        height: 250px;
+    }
+
+    .masonry-item.tall .gallery-placeholder {
+        height: 320px;
+    }
+
+    .masonry-item.wide .gallery-placeholder {
+        height: 200px;
+    }
+
 }
