@@ -1,7 +1,9 @@
-/* src/components/Contact.css */
+/* =====================================================
+   CONTACT SECTION
+   ===================================================== */
 
 .contact-section {
-    background-color: #050505; /* Quase preto absoluto */
+    background-color: #050505;
     padding-top: 80px;
     border-top: 1px solid #222;
     color: #fff;
@@ -15,14 +17,17 @@
     gap: 60px;
 }
 
-/* LADO ESQUERDO */
+/* =====================================================
+   LADO ESQUERDO
+   ===================================================== */
+
 .contact-info {
-    flex: 1; /* Ocupa metade */
+    flex: 1;
 }
 
 .contact-info h2 {
     font-family: 'Rye', serif;
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
     color: var(--cor-destaque-dourado);
     margin-bottom: 10px;
 }
@@ -33,7 +38,10 @@
     margin-bottom: 30px;
 }
 
-/* Formulário Estiloso */
+/* =====================================================
+   FORMULÁRIO
+   ===================================================== */
+
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -41,29 +49,36 @@
     margin-bottom: 40px;
 }
 
-.form-group input, 
+.form-group input,
 .form-group textarea {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #444; /* Só a linha de baixo */
+    border-bottom: 1px solid #444;
     padding: 15px 0;
     color: #fff;
     font-family: 'Cinzel', serif;
     font-size: 1rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
 }
 
-.form-group input::placeholder, 
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #555;
 }
 
-.form-group input:focus, 
+.form-group input:focus,
 .form-group textarea:focus {
-    border-bottom-color: var(--cor-destaque-dourado); /* Brilha dourado ao clicar */
+    border-bottom-color: var(--cor-destaque-dourado);
 }
+
+/* BOTÃO */
 
 .btn-submit {
     background-color: var(--cor-destaque-dourado);
@@ -73,7 +88,7 @@
     font-weight: bold;
     font-family: 'Cinzel', serif;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     letter-spacing: 1px;
 }
 
@@ -82,7 +97,10 @@
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
 }
 
-/* Infos Diretas (Endereço, Tel) */
+/* =====================================================
+   CONTATO DIRETO
+   ===================================================== */
+
 .direct-contact {
     border-top: 1px solid #222;
     padding-top: 30px;
@@ -101,45 +119,88 @@
     font-size: 1.5rem;
 }
 
-/* LADO DIREITO (Mapa) */
+/* =====================================================
+   MAPA
+   ===================================================== */
+
 .contact-map {
     flex: 1;
     min-height: 400px;
     border: 1px solid #333;
-    filter: grayscale(100%) invert(92%) contrast(83%); /* Deixa o mapa com visual DARK */
-    transition: filter 0.5s;
+    filter: grayscale(100%) invert(92%) contrast(83%);
+    transition: filter 0.5s ease;
 }
 
 .contact-map:hover {
-    filter: none; /* Fica colorido ao passar o mouse */
+    filter: none;
 }
 
-/* RODAPÉ */
+/* =====================================================
+   FOOTER BAR
+   ===================================================== */
+
 .footer-bar {
     background-color: #000;
     padding: 20px;
-    text-align: center;
     border-top: 1px solid #222;
     font-size: 0.8rem;
     color: #666;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Responsividade */
+/* =====================================================
+   RESPONSIVIDADE - TABLET
+   ===================================================== */
+
+@media (max-width: 1024px) {
+    .contact-container {
+        gap: 40px;
+    }
+
+    .contact-map {
+        min-height: 350px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVIDADE - MOBILE
+   ===================================================== */
+
 @media (max-width: 768px) {
+
     .contact-container {
         flex-direction: column;
+        gap: 40px;
     }
-    
+
     .contact-map {
         height: 300px;
+        min-height: unset; /* IMPORTANTE: remove min-height fixo */
     }
 
     .footer-bar {
         flex-direction: column;
         gap: 10px;
+        text-align: center;
     }
+}
+
+/* =====================================================
+   TELAS MUITO PEQUENAS
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+    .contact-section {
+        padding-top: 60px;
+    }
+
+    .contact-map {
+        height: 250px;
+    }
+
 }
