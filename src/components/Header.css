@@ -1,29 +1,29 @@
 /* ================= HEADER BASE ================= */
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
-  background-color: var(--cor-fundo-secundaria);
-  border-bottom: 2px solid var(--cor-destaque-marrom);
+  background: rgba(18,18,18,0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
 .header-inner {
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 1rem 1.5rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 1rem 1.5rem;
 }
 
 /* ================= LOGO ================= */
 
 .logo img {
-  height: clamp(70px, 8vw, 110px);
-  width: auto;
-  display: block;
+  height: clamp(60px, 7vw, 90px);
   transition: transform 0.3s ease;
 }
 
@@ -40,31 +40,65 @@
 
 .nav a {
   font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--cor-texto-principal);
+  position: relative;
   transition: color 0.3s ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--cor-destaque-dourado);
+  transition: width 0.3s ease;
 }
 
 .nav a:hover {
   color: var(--cor-destaque-dourado);
 }
 
-/* ================= BOTÃO HAMBURGER ================= */
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= HAMBURGER ================= */
 
 .menu-toggle {
   display: none;
   flex-direction: column;
   gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
 }
 
 .menu-toggle span {
-  width: 28px;
+  width: 26px;
   height: 3px;
-  background-color: var(--cor-texto-principal);
-  transition: 0.3s;
+  background: white;
+  transition: 0.3s ease;
+}
+
+/* animação para X */
+
+.menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* ================= MOBILE ================= */
@@ -76,28 +110,41 @@
   }
 
   .nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-
-    width: 100%;
-    background-color: var(--cor-fundo-secundaria);
-
-    max-height: 0;
-    overflow: hidden;
-
-    transition: max-height 0.4s ease;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 260px;
+    height: 100vh;
+    background: #111;
+    padding-top: 120px;
+    transition: right 0.4s ease;
   }
 
   .nav.active {
-    max-height: 400px;
+    right: 0;
   }
 
   .nav ul {
     flex-direction: column;
-    padding: 1rem 0;
-    gap: 1rem;
+    gap: 2rem;
     align-items: center;
   }
 
+}
+
+/* ================= OVERLAY ================= */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: all;
 }
