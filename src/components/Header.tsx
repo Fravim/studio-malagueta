@@ -1,35 +1,43 @@
+import { useState } from 'react'
 import './Header.css'
-import logo from '../assets/logo-malagueta-full.png' // Confirme se o nome do arquivo está certo
+import logo from '../assets/logo-malagueta-full.png'
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
-    <header className="header-container">
-      
-      {/* MENU ESQUERDO */}
-      <nav className="menu-group">
-        <ul>
-          {/* O href="#id" é o que faz o scroll funcionar */}
-          <li><a href="#inicio">Início</a></li>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#artistas">Artistas</a></li>
-        </ul>
-      </nav>
+    <header className="header">
 
-      {/* LOGO CENTRAL */}
-      <div className="logo-center">
-        <a href="#inicio"> {/* Clicar na logo também volta pro topo */}
-             <img src={logo} alt="Malagueta Studio" />
+      <div className="header-inner">
+
+        {/* Logo */}
+        <a href="#inicio" className="logo">
+          <img src={logo} alt="Malagueta Studio" />
         </a>
-      </div>
 
-      {/* MENU DIREITO */}
-      <nav className="menu-group">
-        <ul>
-          <li><a href="#galeria">Galeria</a></li>
-          {/* REMOVIDO O BOTÃO ESTÚDIO */}
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </nav>
+        {/* Botão Mobile */}
+        <button 
+          className="menu-toggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Abrir menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        {/* Navegação */}
+        <nav className={`nav ${menuOpen ? 'active' : ''}`}>
+          <ul>
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#artistas">Artistas</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+
+      </div>
 
     </header>
   )
