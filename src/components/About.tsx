@@ -5,14 +5,16 @@ function About() {
     <section id="sobre" className="about-section">
       <div className="about-container">
         
-        {/* LADO A: O Texto */}
+        {/* LADO A: TEXTO */}
         <div className="about-text">
-          <h2>Mais que tinta, <span className="highlight">identidade.</span></h2>
+          <h2>
+            Mais que tinta, <span className="highlight">identidade.</span>
+          </h2>
           
           <p>
-            Localizado no coração da cidade, o <strong>Studio Malagueta</strong> é referência em 
-            arte corporal de alto nível. Fundado pelos irmãos Malagueta, nosso espaço respira 
-            cultura underground com sofisticação.
+            Localizado no coração da cidade, o <strong>Studio Malagueta</strong> 
+            é referência em arte corporal de alto nível. Fundado pelos irmãos 
+            Malagueta, nosso espaço respira cultura underground com sofisticação.
           </p>
           
           <p>
@@ -33,11 +35,10 @@ function About() {
           </div>
         </div>
 
-        {/* LADO B: A Imagem (Por enquanto, um quadro decorativo) */}
+        {/* LADO B: IMAGEM */}
         <div className="about-image">
           <div className="image-placeholder">
-             {/* Aqui entrará uma foto do estúdio ou dos tatuadores trabalhando */}
-             <span>FOTO DO ESTÚDIO</span>
+            <span>FOTO DO ESTÚDIO</span>
           </div>
         </div>
 
