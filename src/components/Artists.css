@@ -162,14 +162,62 @@
 
 /* MOBILE */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
 
-    .gallery-content {
-        grid-template-columns: 1fr;
-    }
+  .gallery-overlay {
+    padding: 0;
+    align-items: flex-start;
+  }
 
-    .gallery-sidebar {
-        border-right: none;
-        border-bottom: 1px solid #333;
-    }
+  .gallery-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    overflow-y: auto;
+  }
+
+  /* Sidebar vira topo */
+
+  .gallery-sidebar {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #222;
+    padding: 30px 20px;
+  }
+
+  .gallery-big-photo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .gallery-sidebar h2 {
+    font-size: 1.4rem;
+  }
+
+  .gallery-bio {
+    font-size: 0.9rem;
+  }
+
+  /* Área dos posts */
+
+  .gallery-grid-area {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .portfolio-embed-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Remove setas no mobile */
+
+  .nav-arrow {
+    display: none;
+  }
+
 }
