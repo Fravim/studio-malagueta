@@ -1,27 +1,25 @@
 import { useState, useEffect } from 'react'
-import { InstagramEmbed } from 'react-social-media-embed';
+import { InstagramEmbed } from 'react-social-media-embed'
 import './Artists.css'
 
-// 1. IMPORTAR AS FOTOS (Verifique se os nomes dos arquivos estão iguais aos da pasta)
-import pedroImg from '../assets/pedro.jpg'   // <--- Troque pelo nome real do arquivo
-import felipeImg from '../assets/felipe.jpg' // <--- Troque pelo nome real do arquivo
-import thatyImg from '../assets/thaty.jpg'   // <--- Troque pelo nome real do arquivo
-
-// Se não tiver as fotos ainda, o código vai dar erro. 
-// Nesse caso, comente as linhas acima e use uma string vazia "" temporariamente.
+import pedroImg from '../assets/pedro.jpg'
+import felipeImg from '../assets/felipe.jpg'
+import thatyImg from '../assets/thaty.jpg'
 
 interface Artist {
-  id: number;
-  name: string;
-  handle: string;
-  bio: string;
-  instagramUrl: string;
-  portfolioUrls: string[];
-  photo: string; // <--- Novo campo para a foto
+  id: number
+  name: string
+  handle: string
+  bio: string
+  instagramUrl: string
+  portfolioUrls: string[]
+  photo: string
 }
 
 function Artists() {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   const artists: Artist[] = [
     {
@@ -30,12 +28,12 @@ function Artists() {
       handle: "@pedromalagueta_",
       instagramUrl: "https://www.instagram.com/pedromalagueta_/",
       bio: "Especialista em composições sombrias e realismo. Pedro busca trazer a essência da alma humana para a pele com contrastes fortes.",
-      photo: pedroImg, // <--- Usando a foto importada
+      photo: pedroImg,
       portfolioUrls: [
-        "https://www.instagram.com/reel/DJ7dTB6PEPL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-        "https://www.instagram.com/reel/C-D6_wCvoH-/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
-        "https://www.instagram.com/reel/DU6hddLj8v4/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
-        "https://www.instagram.com/reel/DA9UdCuJ8mG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        "https://www.instagram.com/reel/DJ7dTB6PEPL/",
+        "https://www.instagram.com/reel/C-D6_wCvoH-/",
+        "https://www.instagram.com/reel/DU6hddLj8v4/",
+        "https://www.instagram.com/reel/DA9UdCuJ8mG/"
       ]
     },
     {
@@ -44,12 +42,12 @@ function Artists() {
       handle: "@felipemalagueta_",
       instagramUrl: "https://www.instagram.com/felipemalagueta_/",
       bio: "Mestre na tradição oriental e traços firmes. Suas obras contam histórias mitológicas com uma pegada moderna.",
-      photo: felipeImg, // <--- Usando a foto importada
+      photo: felipeImg,
       portfolioUrls: [
-        "https://www.instagram.com/reel/DRM4zYxDY37/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-        "https://www.instagram.com/p/DJcZ8MdP3yw/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
-        "https://www.instagram.com/reel/C8Hd-PAOs8G/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
-        "https://www.instagram.com/reel/C7ZY814uI3K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
+        "https://www.instagram.com/reel/DRM4zYxDY37/",
+        "https://www.instagram.com/p/DJcZ8MdP3yw/",
+        "https://www.instagram.com/reel/C8Hd-PAOs8G/",
+        "https://www.instagram.com/reel/C7ZY814uI3K/"
       ]
     },
     {
@@ -57,98 +55,149 @@ function Artists() {
       name: "Thaty",
       handle: "@thaty.tattoo_",
       instagramUrl: "https://www.instagram.com/thaty.tattoo_/",
-      bio: "Delicadeza e força. Thaty domina o Fine Line e o Old School, criando artes que fluem com a anatomia do corpo.",
-      photo: thatyImg, // <--- Usando a foto importada
+      bio: "Delicadeza e força. Thaty domina o Fine Line e o Old School.",
+      photo: thatyImg,
       portfolioUrls: [
-        "https://www.instagram.com/thaty.tattoo_/p/DUJjW3bkQvk/",
-        "https://www.instagram.com/thaty.tattoo_/p/DQKlk5nEdGa/",
-        "https://www.instagram.com/thaty.tattoo_/p/DJ-PVRxtsDN/",
-        "https://www.instagram.com/thaty.tattoo_/p/Cp0uuGHPtno/"
+        "https://www.instagram.com/p/DUJjW3bkQvk/",
+        "https://www.instagram.com/p/DQKlk5nEdGa/",
+        "https://www.instagram.com/p/DJ-PVRxtsDN/",
+        "https://www.instagram.com/p/Cp0uuGHPtno/"
       ]
     }
-  ];
-  // ... (Funções handleNext, handlePrev, useEffect iguais ao anterior) ...
+  ]
+
+  /* Detecta mobile */
+  useEffect(() => {
+    const checkScreen = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    checkScreen()
+    window.addEventListener('resize', checkScreen)
+    return () => window.removeEventListener('resize', checkScreen)
+  }, [])
+
+  /* Scroll lock apenas no desktop */
+  useEffect(() => {
+    if (!isMobile && selectedIndex !== null) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [selectedIndex, isMobile])
+
   const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedIndex !== null) setSelectedIndex((prev) => (prev! + 1) % artists.length);
-  };
+    e.stopPropagation()
+    if (selectedIndex !== null)
+      setSelectedIndex((prev) => (prev! + 1) % artists.length)
+  }
 
   const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (selectedIndex !== null) setSelectedIndex((prev) => (prev! - 1 + artists.length) % artists.length);
-  };
+    e.stopPropagation()
+    if (selectedIndex !== null)
+      setSelectedIndex((prev) => (prev! - 1 + artists.length) % artists.length)
+  }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (selectedIndex !== null) setSelectedIndex(null);
-    };
-    if (selectedIndex !== null) window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [selectedIndex]);
+  const toggleArtist = (index: number) => {
+    if (isMobile) {
+      setExpandedIndex(prev => prev === index ? null : index)
+    } else {
+      setSelectedIndex(index)
+    }
+  }
 
-  const activeArtist = selectedIndex !== null ? artists[selectedIndex] : null;
+  const activeArtist = selectedIndex !== null ? artists[selectedIndex] : null
 
   return (
     <section id="artistas" className="artists-section">
       <div className="section-header">
         <h2>Nossos Artistas</h2>
-        <p>Clique no card para uma imersão no portfólio.</p>
+        <p>Clique no card para explorar o portfólio.</p>
       </div>
 
       <div className="artists-grid">
         {artists.map((artist, index) => (
-          <div key={artist.id} className="artist-card" onClick={() => setSelectedIndex(index)}>
-            
-            {/* AQUI MUDOU: Trocamos a letra inicial pela imagem */}
-            <div className="artist-photo-container">
+          <div key={artist.id}>
+            <div
+              className="artist-card"
+              onClick={() => toggleArtist(index)}
+            >
+              <div className="artist-photo-container">
                 <img src={artist.photo} alt={artist.name} className="artist-photo" />
+              </div>
+
+              <div className="artist-banner">
+                <span className="artist-handle">{artist.handle}</span>
+                <h3>{artist.name}</h3>
+              </div>
             </div>
 
-            <div className="artist-banner">
-              <span className="artist-handle">{artist.handle}</span>
-              <h3>{artist.name}</h3>
-            </div>
+            {/* MOBILE EXPANSION */}
+            {isMobile && expandedIndex === index && (
+              <div className="mobile-portfolio">
+                <div className="mobile-bio">
+                  <p>{artist.bio}</p>
+                  <a
+                    href={artist.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gallery-insta"
+                  >
+                    Seguir no Instagram
+                  </a>
+                </div>
+
+                <div className="mobile-grid">
+                  {artist.portfolioUrls.map((url, i) => (
+                    <div key={`${artist.id}-${i}`} className="embed-container">
+                      <InstagramEmbed url={url} width={328} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {activeArtist && (
+      {/* DESKTOP MODAL */}
+      {!isMobile && activeArtist && (
         <div className="gallery-overlay" onClick={() => setSelectedIndex(null)}>
           <button className="nav-arrow left" onClick={handlePrev}>&#10094;</button>
 
           <div className="gallery-content" onClick={(e) => e.stopPropagation()}>
-            
             <div className="gallery-sidebar">
-                {/* AQUI MUDOU TAMBÉM: Foto redonda no modal */}
-                <div className="gallery-big-photo">
-                    <img src={activeArtist.photo} alt={activeArtist.name} />
-                </div>
+              <div className="gallery-big-photo">
+                <img src={activeArtist.photo} alt={activeArtist.name} />
+              </div>
 
-                <h2>{activeArtist.name}</h2>
-                <span className="gallery-handle">{activeArtist.handle}</span>
-                <div className="bio-container">
-                    <p className="gallery-bio">{activeArtist.bio}</p>
-                </div>
-                <a href={activeArtist.instagramUrl} target="_blank" className="btn-gallery-insta">
-                    Seguir no Instagram
-                </a>
+              <h2>{activeArtist.name}</h2>
+              <span className="gallery-handle">{activeArtist.handle}</span>
+
+              <p className="gallery-bio">{activeArtist.bio}</p>
+
+              <a
+                href={activeArtist.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gallery-insta"
+              >
+                Seguir no Instagram
+              </a>
             </div>
 
             <div className="gallery-grid-area">
-                <h3>Portfólio Selecionado</h3>
-                <div className="portfolio-embed-grid">
-                    {activeArtist.portfolioUrls.slice(0, 4).map((url, i) => (
-                        <div key={`${activeArtist.id}-${i}`} className="embed-container">
-                            <InstagramEmbed 
-                                url={url} 
-                                width="100%"
-                                captioned={false} 
-                            />
-                        </div>
-                    ))}
-                </div>
+              <h3>Portfólio Selecionado</h3>
+              <div className="portfolio-embed-grid">
+                {activeArtist.portfolioUrls.map((url, i) => (
+                  <div key={`${activeArtist.id}-${i}`} className="embed-container">
+                    <InstagramEmbed url={url} width="100%" />
+                  </div>
+                ))}
+              </div>
             </div>
-
           </div>
 
           <button className="nav-arrow right" onClick={handleNext}>&#10095;</button>
@@ -158,6 +207,4 @@ function Artists() {
   )
 }
 
-
 export default Artists
-
