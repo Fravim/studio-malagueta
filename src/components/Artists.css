@@ -160,15 +160,19 @@
     gap: 20px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media (max-width: 768px) {
 
+  /* Overlay ocupa tela inteira corretamente */
   .gallery-overlay {
+    position: fixed;
+    inset: 0;
     padding: 0;
     align-items: flex-start;
   }
 
+  /* Modal vira layout vertical */
   .gallery-content {
     display: flex;
     flex-direction: column;
@@ -180,7 +184,6 @@
   }
 
   /* Sidebar vira topo */
-
   .gallery-sidebar {
     width: 100%;
     border: none;
@@ -202,22 +205,27 @@
   }
 
   /* Área dos posts */
-
   .gallery-grid-area {
     width: 100%;
     padding: 20px;
   }
 
+  /* Instagram embeds em coluna única */
   .portfolio-embed-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  /* Remove setas no mobile */
+  /* Evita que o embed quebre largura */
+  .portfolio-embed-grid iframe {
+    width: 100% !important;
+    min-width: unset !important;
+  }
 
+  /* Remove setas no mobile */
   .nav-arrow {
     display: none;
   }
-
 }
+
